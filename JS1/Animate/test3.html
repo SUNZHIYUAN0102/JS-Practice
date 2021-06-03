@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            width: 600px;
+            height: 500px;
+        }
+        
+        .box {
+            margin: 20px auto;
+            width: 600px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pho {
+            width: 2400px;
+            height: 500px;
+            background-color: pink;
+            position: absolute;
+        }
+        
+        .pho li {
+            float: left;
+        }
+        
+        .box .left {
+            color: black;
+            font-size: 30px;
+            position: absolute;
+            top: 50%;
+            margin-top: -27px;
+            left: 0;
+            display: none;
+        }
+        
+        .box .right {
+            color: black;
+            font-size: 30px;
+            position: absolute;
+            top: 50%;
+            margin-top: -27px;
+            right: 0;
+            display: none;
+        }
+        
+        .circle {
+            position: absolute;
+            top: 470px;
+            left: 25px;
+        }
+        
+        .circle li {
+            float: left;
+            display: block;
+            width: 15px;
+            height: 15px;
+            border: 1px solid white;
+            margin-right: 5px;
+            border-radius: 50%;
+        }
+        
+        .circle li.meow {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box">
+        <div id="pho" class="pho">
+            <ul>
+                <li><img src="images/猫猫.jpg" alt=""></li>
+                <li><img src="images/mia.jpg" alt=""></li>
+                <li><img src="images/pornhub.png" alt=""></li>
+                <li><img src="images/frog.jfif" alt=""></li>
+            </ul>
+        </div>
+        <ol class="circle">
+        </ol>
+        <button id="right" class="right">⇢</button>
+        <button id="left" class="left">⇠</button>
+    </div>
+    <script>
+        var box = document.getElementById('box')
+        var pho = document.getElementById('pho');
+        var ul = pho.querySelector('ul');
+        var ol = box.querySelector('ol');
+        var left = document.getElementById('left');
+        var right = document.getElementById('right');
+
+        var num1 = 1;
+        var num2 = 3;
+
+        for (var i = 0; i < ul.children.length; i++) {
+            var li = document.createElement('li');
+            li.setAttribute('data-index', i);
+            ol.appendChild(li);
+            li.addEventListener('click', function() {
+                for (var i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                var index = this.getAttribute('data-index');
+                this.className = 'meow';
+                pho.style.left = -index * 600 + 'px';
+                num1 = Number(index) + 1;
+                if (num1 == 4) {
+                    num1 = 0;
+                }
+                console.log(num1);
+            });
+        }
+
+        ol.children[0].className = 'meow';
+
+
+        box.addEventListener('mouseover', function() {
+            left.style.display = 'block';
+            right.style.display = 'block';
+        });
+
+        box.addEventListener('mouseleave', function() {
+            left.style.display = 'none';
+            right.style.display = 'none';
+        });
+
+
+        left.addEventListener('click', function() {
+            if (num1 == 0) {
+                num1 = 4;
+                pho.style.left = -600 * num1 + 'px';
+            }
+            num1--;
+            pho.style.left = -600 * num1 + 'px';
+
+            for (var i = 0; i < ol.children.length; i++) {
+                ol.children[i].className = ' ';
+            }
+
+            ol.children[num1].className = 'meow';
+        });
+
+
+        right.addEventListener('click', function() {
+            pho.style.left = -600 * num1 + 'px';
+            num1++;
+            for (var i = 0; i < ol.children.length; i++) {
+                ol.children[i].className = ' ';
+            }
+            ol.children[num1 - 1].className = 'meow';
+            if (num1 == 4) {
+                num1 = 0;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-top: 100px;
+            position: absolute;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button>
+        Click
+    </button>
+    <div></div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        var current = 0;
+        btn.addEventListener('click', function() {
+            window.setInterval(function() {
+                div.style.left = div.offsetLeft + Math.ceil((400 - current) / 10) + 'px';
+                current = div.offsetLeft;
+            }, 300);
+        });
+    </script>
+</body>
+
+</html>

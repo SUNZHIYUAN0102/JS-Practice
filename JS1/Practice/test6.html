@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 10px solid red;
+            padding: 10px solid green;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Meow Meow Meow Meow Meow Meow Meow Meow Meow Meow Meow Meow MeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeowMeow
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        div.addEventListener('scoll', function() {
+            console.log(div.scrollLeft);
+        });
+        console.log(div.scrollWidth);
+    </script>
+</body>
+
+</html>

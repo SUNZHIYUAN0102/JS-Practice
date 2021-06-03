@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slidebar {
+            width: 30px;
+            height: 30px;
+            background-color: pink;
+            text-align: center;
+            position: relative;
+        }
+        
+        .con {
+            width: 100px;
+            height: 30px;
+            background-color: purple;
+            position: absolute;
+            top: 0;
+            left: 0;
+            line-height: 30px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slidebar">
+        <span>~</span>
+        <div class="con" id="con">问题反馈</div>
+    </div>
+    <script>
+        var slidebar = document.querySelector('.slidebar');
+        var con = document.getElementById('con');
+
+        slidebar.addEventListener('mouseover', function() {
+            var timer = window.setInterval(function() {
+                if (con.offsetLeft >= 30) {
+                    window.clearInterval(timer);
+                } else {
+                    con.style.display = 'block';
+                    con.style.left = con.offsetLeft + 30 + 'px';
+                }
+
+            }, 400);
+        });
+
+        slidebar.addEventListener('mouseleave', function() {
+            var timer = window.setInterval(function() {
+                if (con.offsetLeft <= 0) {
+                    window.clearInterval(timer);
+                } else {
+                    con.style.display = 'none';
+                    con.style.left = con.offsetLeft - 30 + 'px';
+                }
+
+            }, 400);
+        });
+    </script>
+</body>
+
+</html>

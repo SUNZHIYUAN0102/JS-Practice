@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .send input {
+            width: 150px;
+            height: 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="send">
+        <input type="text">
+        <button>发布</button>
+    </div>
+
+    <script>
+        var input = document.querySelector('input');
+        var button = document.querySelector('button');
+        var box = document.querySelector('.send');
+        button.onclick = function() {
+            var del = document.createElement('button');
+            del.innerText = '删除';
+            var li = document.createElement('li');
+            li.innerText = input.value;
+            box.insertBefore(li, box.children[2]);
+            input.value = null;
+            li.appendChild(del);
+
+
+            var list = document.querySelectorAll('li');
+            for (var i = 0; i < list.length; i++) {
+                list[i].firstElementChild.onclick = function() {
+                    box.removeChild(this.parentNode);
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

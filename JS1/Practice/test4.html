@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 534px;
+            height: 300px;
+        }
+        
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: #FEDE4F;
+            opacity: .5;
+            cursor: move;
+            display: none;
+        }
+        
+        .big {
+            width: 1000px;
+            height: 800px;
+            background-color: pink;
+            position: absolute;
+            left: 535px;
+            top: 0;
+            display: none;
+        }
+        
+        .big img {
+            width: 700px;
+            height: 500px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <img src="images/猫猫.jpg" alt="">
+        <div class="mask"></div>
+        <div class="big">
+            <img id="bigimg" src="images/猫猫.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        var box = document.getElementById('box');
+        var mask = document.querySelector('.mask');
+        var big = document.querySelector('.big');
+        var bigImg = document.querySelector('#bigimg');
+
+        box.addEventListener('mouseover', function() {
+            mask.style.display = 'block';
+            big.style.display = 'block';
+        });
+
+        box.addEventListener('mousemove', function(e) {
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            var maskX = x - 75;
+            var maskY = y - 75;
+            if (maskX < 0) {
+                maskX = 0;
+            } else if (maskX > 384) {
+                maskX = 384;
+            }
+
+            if (maskY < 0) {
+                maskY = 0;
+            } else if (maskY > 150) {
+                maskY = 150;
+            }
+
+            mask.style.left = maskX + 'px';
+            mask.style.top = maskY + 'px';
+
+            var bigMax = big.offsetWidth - bigImg.offsetWidth;
+
+            var bigX = maskX * bigMax / 384;
+            var bigY = maskY * bigMax / 150;
+
+            bigImg.style.left = bigX + 'px';
+            bigImg.style.top = bigY + 'px';
+
+        });
+
+        box.onmouseleave = function() {
+            mask.style.display = 'none';
+            big.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

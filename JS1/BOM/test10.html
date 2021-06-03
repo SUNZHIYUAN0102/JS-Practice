@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        div {
+            margin: 0 auto;
+            font-size: 20px;
+            width: 100px;
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button>Click</button>
+    <div></div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        var s = 5;
+        count();
+        window.setInterval(count, 1000);
+
+        function count() {
+            div.innerText = s + '秒后跳转页面';
+            s--;
+            if (s == 0) {
+                window.location.href = 'http://www.meow.com';
+            }
+        }
+    </script>
+</body>
+
+</html>

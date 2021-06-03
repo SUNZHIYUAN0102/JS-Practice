@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+        
+        .main {
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+            left: 50%;
+            margin-left: -80px;
+        }
+        
+        .box {
+            width: 450px;
+            height: 250px;
+            background-color: white;
+            margin: 100px auto;
+            padding-top: 10px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            margin-left: -225px;
+            display: none;
+        }
+        
+        h3 {
+            margin: 0;
+            font-weight: 400;
+            cursor: move;
+        }
+        
+        .first {
+            margin-top: 20px;
+        }
+        
+        .first span {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+        
+        input {
+            width: 300px;
+            height: 35px;
+            padding-left: 2px;
+            border: 1px solid gray;
+        }
+        
+        button {
+            width: 170px;
+            height: 30px;
+            margin: 30px auto;
+            background-color: white;
+            border: 1px solid gray;
+        }
+        
+        .close {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(139, 132, 132);
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top: -25px;
+            left: 425px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <span class="main">
+        点击，弹出登录框
+    </span>
+
+    <div id="box" class="box">
+        <h3>登录会员</h3>
+        <div class="first">
+            <span>用户名:&nbsp; </span>
+            <input type="text" placeholder="请输入用户名">
+        </div>
+        <div class="first">
+            <span>登录密码:&nbsp; </span>
+            <input type="password" placeholder="请输入登录密码">
+        </div>
+        <button>登录会员</button>
+        <div id="close" class="close">
+            关闭
+        </div>
+    </div>
+
+    <script>
+        var show = document.querySelector('span');
+        var meow = document.getElementById('box');
+        var close = document.getElementById('close');
+        var title = document.querySelector('h3');
+        show.onclick = function() {
+            document.body.style.backgroundColor = 'rgb(80,76,76)';
+            meow.style.display = 'block';
+        };
+
+        title.addEventListener('mousedown', function(e) {
+            var x = meow.offsetLeft;
+            var y = meow.offsetTop;
+            var bigX = e.pageX;
+            var bigY = e.pageY;
+            var defaultX = bigX - x;
+            var defaultY = bigY - y;
+            document.addEventListener('mousemove', move);
+
+            function move(e) {
+                meow.style.left = (e.pageX - defaultX) + 'px';
+                meow.style.top = (e.pageY - defaultY) + 'px';
+            }
+
+            document.addEventListener('mouseup', function() {
+                document.removeEventListener('mousemove', move);
+            });
+        });
+
+
+        close.onclick = function() {
+            document.body.style.backgroundColor = 'white';
+            meow.style.display = 'none';
+        };
+    </script>
+</body>
+
+</html>

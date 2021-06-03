@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo" index="1">
+    </div>
+
+    <script>
+        var demo = document.querySelector('#demo');
+        console.log(demo.id);
+        console.log(demo.getAttribute('index'));
+        demo.id = 'test';
+        demo.className = 'Meoww';
+        demo.setAttribute('index', 3);
+        demo.setAttribute('class', 'frog');
+        demo.removeAttribute('index');
+        demo.removeAttribute('class');
+    </script>
+</body>
+
+</html>

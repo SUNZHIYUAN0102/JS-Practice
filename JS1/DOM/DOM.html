@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        li {
+            list-style: none;
+            width: 100px;
+            height: 20px;
+            text-align: center;
+            border: 1px solid orange;
+            border-top: none;
+        }
+        
+        li:hover {
+            background-color: orange;
+        }
+        
+        a {
+            color: black;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dt {
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background-color: pink;
+        }
+        
+        .dd {
+            display: none;
+        }
+        
+        .dropdown {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dropdown" id="meow">
+        <div class="dt" id="first">
+            Meow
+        </div>
+        <div class="dd" id="second">
+            <ul>
+                <li><a href="">dick</a></li>
+                <li><a href="">dick</a></li>
+                <li><a href="">dick</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <script>
+        var first = document.querySelector('div');
+
+        var second = document.getElementById('second');
+
+        //var second = document.querySelector(".dd")
+        first.onmouseover = function() {
+            second.style.display = 'block';
+        }
+        first.onmouseleave = function() {
+            second.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        table {
+            margin: 40px auto;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            display: block;
+        }
+        
+        tbody {
+            display: block;
+        }
+        
+        th {
+            width: 90px;
+            height: 40px;
+            border: 1px solid black;
+            border-bottom: none;
+        }
+        
+        td {
+            width: 90px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+
+        <script>
+            var body = document.querySelector('tbody');
+            var list = [{
+                name: 'sun',
+                subject: 'js',
+                score: 99
+            }, {
+                name: 'ksenia',
+                subject: 'js',
+                score: 10
+            }, {
+                name: 'sun2',
+                subject: 'js',
+                score: 100
+            }];
+
+            for (var i = 0; i < list.length; i++) {
+                var tr = document.createElement('tr');
+                body.appendChild(tr);
+                for (var j in list[i]) {
+                    var td = document.createElement('td');
+                    td.innerText = list[i][j];
+                    tr.appendChild(td);
+
+                }
+            }
+        </script>
+    </table>
+</body>
+
+</html>

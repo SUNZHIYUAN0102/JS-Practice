@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-image: url(images/猫猫.jpg);
+            background-repeat: no-repeat;
+            background-size: 100px;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        document.addEventListener('mousemove', function(e) {
+
+            var x = e.clientX;
+            var y = e.clientY;
+            div.style.left = (x - 50) + 'px';
+            div.style.top = (y - 20) + 'px';
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="customers">
+        <tr>
+            <th><input type="checkbox"></th>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>Berglunds snabbköp</td>
+            <td>Christina Berglund</td>
+            <td>Sweden</td>
+        </tr>
+
+    </table>
+
+
+    <script>
+        var lines = document.getElementsByTagName('tr');
+
+        for (var i = 1; i < lines.length; i++) {
+
+            lines[i].onmouseover = function() {
+                this.style.backgroundColor = 'pink';
+            }
+
+            lines[i].onmouseleave = function() {
+                this.style.backgroundColor = '';
+            }
+        }
+
+        var main = document.querySelector('input');
+        var all = document.getElementsByTagName('input');
+        var a = 0;
+        main.onclick = function() {
+            if (a == 0) {
+                for (var i = 1; i < all.length; i++) {
+                    all[i].checked = true;
+                }
+                a = 1;
+            } else {
+                for (var i = 1; i < all.length; i++) {
+                    all[i].checked = false;
+                }
+                a = 0;
+            }
+        }
+
+
+        for (var i = 1; i < all.length; i++) {
+            all[i].onclick = function() {
+                var flag = true;
+                for (var i = 1; i < all.length; i++) {
+                    if (all[i].checked == false) {
+                        flag = false;
+                    }
+                }
+                main.checked = flag;
+                if (main.checked == true) {
+                    a = 1;
+                } else {
+                    a = 0;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

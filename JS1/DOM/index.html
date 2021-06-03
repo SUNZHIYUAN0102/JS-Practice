@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var str = 'qwdwqdyuhqwdqwdjqdwiqjdq';
+        console.log(str.length);
+        console.log(str.indexOf('m'));
+        console.log(str.charAt(3));
+        for (var i = 0; i < str.length; i++) {
+            if (str[i] == 'q') {
+                str = str.replace(str[i], '*')
+            }
+        }
+        console.log(str);
+        console.log(str.slice(0, 6));
+        var obj = {};
+        for (var i = 0; i < str.length; i++) {
+            if (obj[str[i]]) {
+                obj[str[i]] += 1;
+            } else {
+                obj[str[i]] = 1;
+            }
+        }
+        var max = 0;
+        var char = '';
+        for (var i in obj) {
+            if (obj[i] > max) {
+                max = obj[i];
+                char = i;
+            }
+        }
+        console.log(max, char);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
